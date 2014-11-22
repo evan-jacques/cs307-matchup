@@ -10,49 +10,49 @@
 from django.db import models
 
 class Rank(models.Model):
-	id = models.IntegerField(primary_field=True)
-    user_id = models.IntegerField()
-    score_total = models.IntegerField()
-    score_nhl = models.IntegerField()
-    score_nba = models.IntegerField()
-    class Meta:
-        db_table = u'Rank'
+	id = models.IntegerField(primary_key=True)
+	user_id = models.IntegerField()
+	score_total = models.IntegerField()
+	score_nhl = models.IntegerField()
+	score_nba = models.IntegerField()
+	class Meta:
+		db_table = u'Rank'
 
 class Schedule(models.Model):
-	id = models.IntegerField(primary_field=True)
-    game_id = models.IntegerField(unique=True)
-    league = models.CharField(unique=True, max_length=30)
-    time = models.CharField(max_length=90)
-    status = models.CharField(max_length=90)
-    home_team = models.CharField(unique=True, max_length=150)
-    home_score = models.IntegerField()
-    away_team = models.CharField(unique=True, max_length=150)
-    away_score = models.IntegerField()
-    winner = models.CharField(max_length=90)
-    class Meta:
-        db_table = u'Schedule'
+	id = models.IntegerField(primary_key=True)
+	game_id = models.IntegerField(unique=True)
+	league = models.CharField(unique=True, max_length=30)
+	time = models.CharField(max_length=90)
+	status = models.CharField(max_length=90)
+	home_team = models.CharField(unique=True, max_length=150)
+	home_score = models.IntegerField()
+	away_team = models.CharField(unique=True, max_length=150)
+	away_score = models.IntegerField()
+	winner = models.CharField(max_length=90)
+	class Meta:
+		db_table = u'Schedule'
 
 class UserPicks(models.Model):
-	id = models.IntegerField(primary_field=True)
-    user_id = models.IntegerField()
-    game_id = models.IntegerField()
-    league = models.CharField(max_length=90)
-    winner = models.CharField(max_length=90)
-    points = models.IntegerField()
-    class Meta:
-        db_table = u'User_picks'
+	id = models.IntegerField(primary_key=True)
+	user_id = models.IntegerField()
+	game_id = models.IntegerField()
+	league = models.CharField(max_length=90)
+	winner = models.CharField(max_length=90)
+	points = models.IntegerField()
+	class Meta:
+		db_table = u'User_picks'
 
 class Users(models.Model):
-	id = models.IntegerField(primary_field=True)
-    user_id = models.IntegerField()
-    username = models.CharField(max_length=60)
-    email = models.CharField(max_length=90)
-    password = models.CharField(max_length=60)
-    score_total = models.IntegerField()
-    score_nhl = models.IntegerField()
-    score_nba = models.IntegerField()
-    class Meta:
-        db_table = u'Users'
+	id = models.IntegerField(primary_key=True)
+	user_id = models.IntegerField()
+	username = models.CharField(max_length=60)
+	email = models.CharField(max_length=90)
+	password = models.CharField(max_length=60)
+	score_total = models.IntegerField()
+	score_nhl = models.IntegerField()
+	score_nba = models.IntegerField()
+	class Meta:
+		db_table = u'Users'
 
 # class AuthGroup(models.Model):
 #     id = models.IntegerField(primary_key=True)
