@@ -28,7 +28,7 @@ def today(league,date):
 			home = home_tree.get('nickname')
 			away = visiting_tree.get('nickname')
 			os.environ['TZ'] = 'US/Eastern'
-			start = int(time.mktime(time.strptime('%s %d' % (gamestate_tree.get('gametime'), yyyymmdd), '%I:%M %p %Y%m%d')))
+			start = int(time.mktime(time.strptime('%s %d' % (gamestate_tree.get('gametime'), date), '%I:%M %p %Y%m%d')))
 			del os.environ['TZ']
 			games.append({
 			'league': league,

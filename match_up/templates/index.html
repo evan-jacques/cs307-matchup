@@ -43,7 +43,7 @@ body {
 		<div class="header-cont">
 			<div class="header">{{users.username}} {{users.score_total}}</div>
 		</div>
-		<div class="content">
+		<div class="contents">
 		</br>
 		</br>
 		<h1> Okay whatever</h1>
@@ -52,33 +52,51 @@ body {
 			// 	for (var i = 0; i< gamesList.length(); i++)
 			// 		gameList[i].league
 			// };
+			console.log('1');
+			function tableGames(){
+				console.log('2');
+				var matchList = (("{{matches}}")).split('],[');
+				console.log(matchList);
+				matchList = matchList.join();
+				matchList = matchList.split('&#39');
+				console.log(matchList);
+				matchList = matchList.join();
+				console.log(matchList);
+				matchList = matchList.split('u,').join('');
+				matchList = matchList.split(',;').join('');
+				matchList = matchList.split(';').join('');
+				console.log(matchList);
+				matchList = matchList.split('],');
+				console.log(matchList);
+				var glist = new Array(matchList.length);
+				for(var x = 0; x < matchList.length; x ++){
+					var m = matchList[x].split('[').join('');
+					var m = m.split(']').join('');
+					var m = m.split(' ').join('');
+					var mtch = m.split(',');
+					glist[x] = mtch;
+					
+					console.log(mtch);
+				}
+				console.log(glist);
+				var body=document.getElementsByTagName('body')[0];
+				var tbl=document.createElement('table');
+				tbl.style.width='100px';
+				tbl.style.border = "1px solid black";
 
-			
-
-			function tableGames(gamesList){
-			    var body = document.body,
-			        tbl  = document.createElement('table');
-			    tbl.style.width='100px';
-			    tbl.style.border = "1px solid black";
-
-			    for(var i = 0; i < gamesList.length(); i++){
-			        var tr = tbl.insertRow();
-			        var game = gamesList[i];
-			        for(var j = 0; j < game.length(); j++ ){
+				for(var i = 0; i < glist.length; i++){
+					var tr = tbl.insertRow();
+					var game = glist[i];
+					for(var j = 0; j < game.length; j++ ){            
+						var td = tr.insertCell();
+						td.appendChild(document.createTextNode(game[j]))
+						td.style.border = "1px solid black";
+					}
 			            
-			                var td = tr.insertCell();
-			                td.appendChild(document.createTextNode(game[0]))
-			                td.style.border = "1px solid black";
-			                if(i==1&&j==1){
-			                    td.setAttribute('rowSpan','2');
-			            }
-			            
-			        }
-			    }
+				}
 			    body.appendChild(tbl);
 			}
-
-			tableGames({{todaysGames}})
+			document.getElementsByClassName("content").innerHTML = tableGames();
 
 		</script>
 		 	

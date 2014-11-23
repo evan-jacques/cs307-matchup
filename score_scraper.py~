@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 url = 'http://scores.nbcsports.msnbc.com/ticker/data/gamesMSNBC.js.asp?jsonp=true&sport=%s&period=%d'
  
 def today(league,date):
-	yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
+	#yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
 	#print yyyymmdd
 	games = []
 	try:
