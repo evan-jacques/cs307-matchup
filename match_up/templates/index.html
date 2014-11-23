@@ -27,22 +27,65 @@ body {
 
 .content {
 
-	width:960px;
+	width:100%;
 	background: #F0F0F0;
 	border: 1px solid #CCC;
 	height: 2000px;
 	
 }
+.hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
 </style>
+
 </head>
 <body>
+	<iframe name="hiddenFrame" class="hide"></iframe>
+
 		<div class="header-cont">
-			<div class="header">{{users.username}}</div>
+			<div class="header">{{users.username}} {{users.score_total}}</div>
 		</div>
 		<div class="content">
 		</br>
 		</br>
-		<h1> OKAY IT WORKS </h1>
+		<h1> Okay whatever</h1>
+		<script type="text/javascript">
+			// function gamesTable (gamesList) {
+			// 	for (var i = 0; i< gamesList.length(); i++)
+			// 		gameList[i].league
+			// };
+
+			
+
+			function tableGames(gamesList){
+			    var body = document.body,
+			        tbl  = document.createElement('table');
+			    tbl.style.width='100px';
+			    tbl.style.border = "1px solid black";
+
+			    for(var i = 0; i < gamesList.length(); i++){
+			        var tr = tbl.insertRow();
+			        var game = gamesList[i];
+			        for(var j = 0; j < game.length(); j++ ){
+			            
+			                var td = tr.insertCell();
+			                td.appendChild(document.createTextNode(game[0]))
+			                td.style.border = "1px solid black";
+			                if(i==1&&j==1){
+			                    td.setAttribute('rowSpan','2');
+			            }
+			            
+			        }
+			    }
+			    body.appendChild(tbl);
+			}
+
+			tableGames({{todaysGames}})
+
+		</script>
+		 	
+
+		<form action="../../update-schedule.py" method="POST" target="hiddenFrame">
+			<input type="submit" value="Update" />
+		</form>
 		</div>
 
 </body>

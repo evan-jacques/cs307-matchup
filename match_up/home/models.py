@@ -37,6 +37,9 @@ class UserPicks(models.Model):
 	user_id = models.IntegerField()
 	game_id = models.IntegerField()
 	league = models.CharField(max_length=90)
+	user_pick = models.CharField(max_length=90)
+	home_team = models.CharField(max_length=90)
+	away_team = models.CharField(max_length=90)
 	winner = models.CharField(max_length=90)
 	points = models.IntegerField()
 	class Meta:
