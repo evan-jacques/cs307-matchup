@@ -44,12 +44,13 @@ def today(league,date):
 	except Exception, e:
 		print e
 	return games
- 
+''' 
 if __name__ == "__main__":
 	for league in ['NBA', 'NHL']:
 		print today(league)
 		time.sleep(1)
 	#print today('MLB')
+'''
 """
 1508798512690156
 04437ecd63d6e0214f69b17daaf5b653

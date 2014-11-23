@@ -22,6 +22,7 @@ if __name__ == '__main__':
 			data = scores.today(league,day)
 			print data
 			for game in data:
+				_id = 0
 				hteam = game['home']
 				ateam = game['away']
 				status = game['status']
@@ -41,6 +42,5 @@ if __name__ == '__main__':
 						print 'a'
 				except ValueError:
 					pass
-				dbcursor.execute("INSERT INTO Schedule(game_id,league,time,status,home_team,home_score,away_team,away_score,winner) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE status = Values(status), home_score = Values(home_score), away_score = Values(away_score), winner = Values(winner)",(day,sport,start,status,hteam,hscore,ateam,ascore,winner))
+				dbcursor.execute("INSERT INTO Schedule(id,game_id,league,time,status,home_team,home_score,away_team,away_score,winner) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE time = Values(time), status = Values(status), home_score = Values(home_score), away_score = Values(away_score), winner = Values(winner)",(_id,day,sport,start,status,hteam,hscore,ateam,ascore,winner))
 			db.commit()
-
