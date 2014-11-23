@@ -7,6 +7,7 @@ from .models import UserPicks, Users, Schedule
 import datetime
 import pytz
 from .forms import tableForm
+import MySQLdb
 
 
 host = 'mysql.cs.mcgill.ca'
@@ -47,15 +48,15 @@ def index(request):
 			_points = 0
 			nhl_points = 0
 			nba_points = 0
-			if (game.home_team == pick.home_team && game.away_team == pick.away_team):
+			if (str(game.home_team) == str(pick.home_team) and str(game.away_team) == str(pick.away_team)):
 				if (game.winner == pick.user_pick):
 					#add a point to the user_pick
 					_points = 1
 
 					if (game.league == "NHL"):
-						nhl_points++
+						nhl_points += 1
 					else:
-						nba_points++
+						nba_points += 1
 
 
 
