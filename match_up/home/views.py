@@ -30,7 +30,7 @@ def index(request):
 	# tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )
 	# formset = tableFormSet()
 
-	#TABLE = "<table>"
+	TABLE = "<table>"
 	# if request.method == 'GET':
 	
 	matches = []
@@ -64,7 +64,16 @@ def index(request):
 				dbcursor.execute("INSERT INTO User_Picks(id, user_id, game_id, league, home_team, away_team, user_pick, winner, points) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE winner = Values(winner), points = Values(points)", (_id, pick.user_id, pick.game_id, pick.league, pick.home_team, pick.away_team, pick.user_pick, game.winner, _points))
 			total_points = nhl_points + nba_points
 			dbcursor.execute("INSERT INTO Users(id, user_id, username, email, password, score_total, score_nhl, score_nba) VALUES(%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE score_total = Values(score_total), score_nhl = Values(score_nhl), score_nba = Values(score_nba)", (_id, users.user_id, users.username, users.email, users.password, total_points, nhl_points, nba_points))
-	return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames, 'matches' : matches},context_instance=RequestContext(request))
+	
+
+		g = "<tr> <td> %s </td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s%s%s\">%s</td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s%s%s\">%s</td><td>%s</td> </tr>"  % (str(game.league), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.home_team),  str(game.game_id), str(game.league), str(game.home_team), str(game.away_team),  str(game.game_id), str(game.league), str(game.away_team), str(game.away_team), str(game.time))
+		TABLE = TABLE + g
+	TABLE = TABLE + "</table>"
+		# game_id = "yyyymmdd"
+		# <input=\"radio\" name=\"pick %s %s %s %s\" value=\"%s %s %s\">%s
+	# str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.home_team),
+	# g = "<input type=\"radio\" name=\"sex\" value=\"male\">Male<br><input type=\"radio\" name=\"sex\" value=\"female\">Female"
+	return render_to_response('index.html', {'TABLE': TABLE, 'users': users, 'todaysGames' : todaysGames, 'matches' : matches},context_instance=RequestContext(request))
 
 
 		
@@ -82,12 +91,9 @@ def index(request):
 			# 	print form
 
 
-'''
-		g = "<form><tr> <td> %s </td><td><input=\"radio\" name=\"pick %s %s %s %s\" value=\"%s %s %s\"> </td> <td>%s</td><td> %s </td> <td> <input= \"radio\" name=\"pick %s %s %s %s\" value=\"%s %s %s\"></td><td>%s</td> </tr> </form>"  % (str(game.league), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team),  str(game.game_id), str(game.league), str(game.away_team),str(game.time))
-		TABLE = TABLE + g
-	TABLE = TABLE + "</table>"
-# game_id = "yyyymmdd"
-'''
+		
+
+
 
 	#return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames, 'matches' : matches})
 
