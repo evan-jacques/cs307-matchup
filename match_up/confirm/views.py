@@ -36,7 +36,9 @@ def confirm(request):
 			dbcursor.execute("INSERT INTO User_picks(id, user_id, game_id, league, home_team, away_team, user_pick, winner, points) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE user_pick = Values(user_pick), winner = Values(winner), points = Values(points)", (_id, u_id, date, league, home_team, away_team, user_pick, winner, points))
 		except IndexError:
 			continue
-	users = Users(username = 'user1')
+	user = (Users.objects.filter(username = 'user1'))
+	for u in user:
+		users = u
 	history = list(UserPicks.objects.filter(user_id = u_id))
 	TABLE = "<table><tr><th>Game Date</th><th>League</th><th>Home</th><th>Away</th><th>Your Pick</th><th>Winning Team</th><th>Points</th></tr>"
 	for game in history:
