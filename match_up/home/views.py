@@ -32,7 +32,7 @@ def index(request):
 	# tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )
 	# formset = tableFormSet()
 
-	TABLE = "<table>"
+	TABLE = "<table><tr><th>League</th><th>Home</th><th>Away</th><th>Start Time</th>"
 	# if request.method == 'GET':
 	
 	matches = []

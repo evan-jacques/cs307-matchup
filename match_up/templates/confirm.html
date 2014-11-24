@@ -24,6 +24,24 @@ body {
 	font-size: 30px
 	
 }
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+td, th {
+	border: 1px solid #999;
+	padding: 0.5rem;
+	font-family: "Arial", sans-serif;
+
+}
+
+th{
+	background-color: #C9C9DB;
+
+}
+tr:hover {
+	background-color: #C9C9DB;
+}
 
 .content {
 
@@ -39,8 +57,10 @@ body {
 
 </head>
 <body>
+	<div class="content">
 	{% autoescape off %}{{TABLE}}{% endautoescape %}
 	<br><br>
 	<a href='http://127.0.0.1:8000/'> Back To Picks </a>
+	</div>
 </body>
 </html>
