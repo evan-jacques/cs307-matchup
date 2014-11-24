@@ -23,7 +23,9 @@ def index(request):
 	# TABLE = "<table>"
 	# for game in todaysGames 
 	yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
-	users = Users(username = "user1")
+	user = (Users.objects.filter(username = 'user1'))
+	for u in user:
+		users = u
 	todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd))
 	userPicks = list(UserPicks.objects.filter(user_id = users.user_id))
 	#return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames})
@@ -35,14 +37,6 @@ def index(request):
 	
 	matches = []
 	for game in todaysGames:
-		match = []
-		match.append(game.game_id)
-		match.append(game.home_team)
-		match.append(game.away_team)
-		match.append(game.time)
-		match.append(game.league)
-		matches.append(match)
-
 		dbcursor, db = connect_to_db(username,password,host,database)
 		for pick in userPicks:
 			_id = 0
@@ -61,12 +55,12 @@ def index(request):
 
 
 
-				dbcursor.execute("INSERT INTO User_Picks(id, user_id, game_id, league, home_team, away_team, user_pick, winner, points) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE winner = Values(winner), points = Values(points)", (_id, pick.user_id, pick.game_id, pick.league, pick.home_team, pick.away_team, pick.user_pick, game.winner, _points))
+				#dbcursor.execute("INSERT INTO User_picks(id, user_id, game_id, league, home_team, away_team, user_pick, winner, points) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE winner = Values(winner), points = Values(points)", (_id, pick.user_id, pick.game_id, pick.league, pick.home_team, pick.away_team, pick.user_pick, game.winner, _points))
 			total_points = nhl_points + nba_points
 			dbcursor.execute("INSERT INTO Users(id, user_id, username, email, password, score_total, score_nhl, score_nba) VALUES(%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE score_total = Values(score_total), score_nhl = Values(score_nhl), score_nba = Values(score_nba)", (_id, users.user_id, users.username, users.email, users.password, total_points, nhl_points, nba_points))
 	
 
-		g = "<tr> <td> %s </td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s%s%s\">%s</td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s%s%s\">%s</td><td>%s</td> </tr>"  % (str(game.league), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.home_team),  str(game.game_id), str(game.league), str(game.home_team), str(game.away_team),  str(game.game_id), str(game.league), str(game.away_team), str(game.away_team), str(game.time))
+		g = "<tr> <td> %s </td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s,%s,%s,%s,%s,%s\">%s</td><td><input type=\"radio\" name=\"pick%s%s%s%s\" value=\"%s,%s,%s,%s,%s,%s\">%s</td><td>%s</td> </tr>"  % (str(game.league), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league),str(game.home_team), str(game.away_team), str(game.home_team), str(users.user_id), str(game.home_team),  str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.game_id), str(game.league), str(game.home_team), str(game.away_team),str(game.away_team), str(users.user_id), str(game.away_team), str(game.time))
 		TABLE = TABLE + g
 	TABLE = TABLE + "</table>"
 		# game_id = "yyyymmdd"

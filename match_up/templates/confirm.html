@@ -1,8 +1,46 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+	<title>Match Up</title>
+<style type="text/css">
+body {
+	background-color: #003366;
+	height: 2000px;
+}
+.sidebar {
+
+}
+
+.header-cont {
+	width: 100%;
+	position: fixed;
+	top: 0px;
+}
+
+.header {
+	height: 70px;
+	background: #FF6600;
+	width: 100%;
+	font-size: 30px
+	
+}
+
+.content {
+
+	width:100%;
+	background: #F0F0F0;
+	border: 1px solid #CCC;
+	height: 2000px;
+	font-size: 20px;
+	
+}
+.hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
+</style>
+
 </head>
 <body>
-	<h1> YOU DID IT! </h1>
+	{% autoescape off %}{{TABLE}}{% endautoescape %}
+	<br><br>
+	<a href='http://127.0.0.1:8000/'> Back To Picks </a>
 </body>
 </html>
