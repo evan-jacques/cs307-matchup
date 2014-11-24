@@ -44,6 +44,7 @@ body {
 			<div class="header">{{users.username}} {{users.score_total}}</div>
 		</div>
 		<div class="contents">
+			
 		</br>
 		</br>
 		<h1> Okay whatever</h1>
@@ -80,9 +81,10 @@ body {
 					console.log(mtch);
 				}
 				console.log(glist);
+				var form=document.getElementById('myform');
 				var body=document.getElementsByTagName('body')[0];
 				var tbl=document.createElement('table');
-				tbl.style.width='100px';
+				tbl.style.width='100%';
 				tbl.style.border = "1px solid black";
 
 				for(var i = 0; i < glist.length; i++){
@@ -99,7 +101,7 @@ body {
 							label.appendChild(radioInput);
 
     							label.appendChild(document.createTextNode("Home"));
-							if (j = game.length) {
+							if (j == game.length) {
 								radioInput.setAttribute('value', 'HOME');
 							}
 							else {
@@ -112,15 +114,20 @@ body {
 			            
 				}
 			    body.appendChild(tbl);
+			    form.appendChild(tbl);
 			}
 			document.getElementsByClassName("content").innerHTML = tableGames();
 
 		</script>
-		 	
-
-		<form action="../../update-schedule.py" method="POST" target="hiddenFrame">
+		<form action="/pick/" method="POST" id="myform">
+			{% csrf_token %}
 			<input type="submit" value="Update" />
 		</form>
+		 	
+
+		<!-- <form action="/pick/" method="POST">
+			<input type="submit" value="Update" />
+		</form> -->
 		</div>
 
 </body>
