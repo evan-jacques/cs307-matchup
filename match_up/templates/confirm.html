@@ -4,25 +4,31 @@
 	<title>Match Up</title>
 <style type="text/css">
 body {
-	background-color: #003366;
+	background-color: #F0F0F0;
 	height: 2000px;
 }
-.sidebar {
-
-}
-
 .header-cont {
 	width: 100%;
 	position: fixed;
 	top: 0px;
+
 }
 
 .header {
 	height: 70px;
-	background: #FF6600;
+	background: #003366;
 	width: 100%;
-	font-size: 30px
+	font-size: 30px;
+	color:white;
+	margin-right: -8px;
+
+
 	
+}
+
+.logo {
+	margin-left: 90%;
+	margin-top: -55px;
 }
 table {
 	border-collapse: collapse;
@@ -57,6 +63,15 @@ tr:hover {
 
 </head>
 <body>
+	<div class="header-cont">
+			<div class="header">
+				<span style="background-color:grey; color:white; font-size:61.5px; font-family: 'Arial', sans-serif;">{{users.username}}</span> score:{{users.score_total}}
+				<div class="logo"><img src="http://i.imgur.com/BYk8c2k.png?1" height="40" width="80"> </div>
+			</div>
+		</div>
+	</br>
+	</br>
+	</br>
 	<div class="content">
 	{% autoescape off %}{{TABLE}}{% endautoescape %}
 	<br><br>
