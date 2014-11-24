@@ -74,6 +74,7 @@ body {
 					var m = m.split(']').join('');
 					var m = m.split(' ').join('');
 					var mtch = m.split(',');
+					mtch[0] = mtch[0].split('L').join('');
 					glist[x] = mtch;
 					
 					console.log(mtch);
@@ -87,10 +88,26 @@ body {
 				for(var i = 0; i < glist.length; i++){
 					var tr = tbl.insertRow();
 					var game = glist[i];
-					for(var j = 0; j < game.length; j++ ){            
+					for(var j = 1; j < (game.length + 2); j++ ){            
 						var td = tr.insertCell();
-						td.appendChild(document.createTextNode(game[j]))
-						td.style.border = "1px solid black";
+						if (j >= game.length) {
+							gamename = game[0] + game[1] + game[2];
+							var label = document.createElement("label");
+							var radioInput = document.createElement('input');
+							radioInput.setAttribute('type', 'radio');
+							radioInput.setAttribute('name', gamename);
+							label.appendChild(radioInput);
+
+    							label.appendChild(document.createTextNode("Home"));
+							if (j = game.length) {
+								radioInput.setAttribute('value', 'HOME');
+							}
+							else {
+								radioInput.setAttribute('value', 'AWAY');
+							}
+							td.appendChild(label);
+						}
+						td.appendChild(document.createTextNode(game[j]));
 					}
 			            
 				}
