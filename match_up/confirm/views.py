@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpRequest
-# from .models import UserPicks, Users, Schedule
+from .models import UserPicks, Users, Schedule
 import MySQLdb
 
 
