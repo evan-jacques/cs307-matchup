@@ -75,7 +75,14 @@ tr:hover {
 	<div class="content">
 	{% autoescape off %}{{TABLE}}{% endautoescape %}
 	<br><br>
-	<a href='http://127.0.0.1:8000/'> Back To Picks </a>
+	
+	<button onclick="goBack()">Go Back</button>
+
+	<script>
+	function goBack() {
+	    window.history.back()
+	}
+	</script>
 	</div>
 </body>
 </html>

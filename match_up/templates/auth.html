@@ -95,15 +95,17 @@ body{
 			<!-- <span style="margin-right:50px">{{ state }}</span> -->
 			<div onKeyPress="return checkSubmit(event)">
 
-	
+	</br>
 
-			
-	<form action="../" method="get">
+	<h1> {{state}}	</h1>
+	<form action="/matchup/" method="post">
 		<!-- {% if next %}
 		<input type="hidden" name="next" value="{{ next }}" />
 		{% endif %} -->
-		
+		{% csrf_token %}
 		<input type="text" class="inputs" name="username" placeholder="Username" value="{{username}}" />
+		</br>
+		</br>
 		
 		<input type="password" class="inputs" name="password" placeholder="Password" value="" /><br />
 	</br>

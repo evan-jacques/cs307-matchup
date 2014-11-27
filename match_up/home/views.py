@@ -21,9 +21,12 @@ def connect_to_db(username,password,host,database,echo=False,pool_size=20):
 
 def index(request):
 	# TABLE = "<table>"
-	# for game in todaysGames 
+	# for game in todaysGames
+	userN = ''
+	userN = request.POST.get('username') 
+	print request.POST
 	yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
-	user = (Users.objects.filter(username = 'user1'))
+	user = (Users.objects.filter(username = userN))
 	for u in user:
 		users = u
 	todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd))
