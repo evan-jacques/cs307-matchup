@@ -44,9 +44,9 @@ def confirm(request):
 		users = u
 	print users
 	history = list(UserPicks.objects.filter(user_id = uid))
-	TABLE = "<table><tr><th>Game Date</th><th>League</th><th>Home</th><th>Away</th><th>Your Pick</th><th>Winning Team</th><th>Points</th></tr>"
+	TABLE = "<table><tr><th>Game Date</th><th>League</th><th>Home</th><th>Home Score</th><th>Away</th><th>Away Score</th><th>Your Pick</th><th>Winning Team</th><th>Points</th></tr>"
 	for game in history:
-		g = '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (str(game.game_id), str(game.league), str(game.home_team), str(game.away_team), str(game.user_pick), str(game.winner), str(game.points))
+		g = '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (str(game.game_id), str(game.league), str(game.home_team),str(game.home_score), str(game.away_team),str(game.away_score), str(game.user_pick), str(game.winner), str(game.points))
 		TABLE = TABLE + g
 	TABLE = TABLE + '</table>'
 

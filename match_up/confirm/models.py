@@ -42,6 +42,8 @@ class UserPicks(models.Model):
 	away_team = models.CharField(max_length=90)
 	winner = models.CharField(max_length=90)
 	points = models.IntegerField()
+	home_score = models.IntegerField()
+	away_score = models.IntegerField()
 	class Meta:
 		db_table = u'User_picks'
 
