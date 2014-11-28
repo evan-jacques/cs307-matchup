@@ -11,5 +11,6 @@ urlpatterns = patterns('',
 	(r'^pick/', 'confirm.views.confirm'),
     (r'^matchup/$', 'auth.views.login_user'),
     (r'^register/$', 'register.views'),
+    (r'^rankings/', 'rankings.views.rankings'),
     (r'^admin/', include(admin.site.urls)),
 )
