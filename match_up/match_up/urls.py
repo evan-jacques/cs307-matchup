@@ -9,8 +9,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	(r'^$', 'home.views.index'),
 	(r'^pick/', 'confirm.views.confirm'),
-    (r'^matchup/$', 'auth.views.login_user'),
-    (r'^register/$', 'register.views'),
-    (r'^rankings/', 'rankings.views.rankings'),
-    (r'^admin/', include(admin.site.urls)),
+	(r'^matchup/$', 'auth.views.login_user'),
+	(r'^register/$', 'register.views.register'),
+	(r'^rankings/', 'rankings.views.rankings'),
+	(r'^admin/', include(admin.site.urls)),
 )
