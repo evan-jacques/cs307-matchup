@@ -46,13 +46,15 @@ body{
 .center {
 	position: absolute;
 	left: 50%;
-	margin-left: -180px;
+	margin-left: -350px;
 }
 
 /*.bg_logo {
 	background-image: url(http://i.imgur.com/BYk8c2k.png);
 }*/
-
+.top {
+	vertical-align: top;
+}
 .inputs {
 	font-size: 20px;
 	text-indent: 5px;
@@ -91,27 +93,53 @@ body{
 		
 	<div class="bg_2">
 		<div class="center">
-			<img src="http://i.imgur.com/BYk8c2k.png">
+			<img style="margin-left: 140px;" src="http://i.imgur.com/BYk8c2k.png">
+			<!-- <h1><span style="margin-left: 200px;"> Match Up </span></h1> -->
 			<!-- <span style="margin-right:50px">{{ state }}</span> -->
 			<div onKeyPress="return checkSubmit(event)">
 
-	</br>
+			
+			<table cellspacing="50">
+			<tr>
+				<td class="top">
+					<h3> {{state}}	</h3>
+					<form action="/matchup/" method="post">
+					
+					{% csrf_token %}
+					<input type="text" class="inputs" name="username" placeholder="Username" value="{{username}}" />
+					</br>
+					</br>
+					
+					<input type="password" class="inputs" name="password" placeholder="Password" value="" />
+					</br>
+					</br>
 
-	<h1> {{state}}	</h1>
-	<form action="/matchup/" method="post">
-		<!-- {% if next %}
-		<input type="hidden" name="next" value="{{ next }}" />
-		{% endif %} -->
-		{% csrf_token %}
-		<input type="text" class="inputs" name="username" placeholder="Username" value="{{username}}" />
-		</br>
-		</br>
+					<input type="submit" value="Log In" />
+					</form>
+				</td>
+				<td>
+				</td>
+				<td class="top">
+					<h3>Register</h3>
+					<form action="/register/" method="post">
 		
-		<input type="password" class="inputs" name="password" placeholder="Password" value="" /><br />
-	</br>
+					{% csrf_token %}
+					<input type="text" class="inputs" name="username" placeholder="Create a Username" value="" />
+					</br>
+					</br>
+					<input type="text" class="inputs" name="email" placeholder="Enter your Email" value="" />
+					</br>
+					</br>
+					
+					<input type="password" class="inputs" name="password" placeholder="Enter a Password" value="" />
+					</br>
+					</br>
 
-		<input type="submit" value="Log In" />
-	</form>
+					<input type="submit" value="Register" />
+					</form>
+				</td>
+			</tr>
+			</table>
 		</div>
 
 		</div>

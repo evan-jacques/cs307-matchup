@@ -10,6 +10,6 @@ urlpatterns = patterns('',
 	(r'^$', 'home.views.index'),
 	(r'^pick/', 'confirm.views.confirm'),
     (r'^matchup/$', 'auth.views.login_user'),
-    (r'^register/$', 'register.views'),
+    (r'^register/$', 'register.views.register'),
     (r'^admin/', include(admin.site.urls)),
 )
