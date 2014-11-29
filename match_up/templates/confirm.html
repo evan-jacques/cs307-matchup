@@ -76,7 +76,13 @@ tr:hover {
 	{% autoescape off %}{{TABLE}}{% endautoescape %}
 	<br><br>
 	
-	<button onclick="goBack()">Go Back</button>
+	<form action="/matchup/" method="POST">
+		{% csrf_token %}
+		<input type="hidden" name="username" value={{users.username}}>
+		<input type="hidden" name="ticket" value=1>
+		<input type="hidden" name="password" value=''>
+		<input type="submit" value="Home">
+	</form>
 
 	<script>
 	function goBack() {

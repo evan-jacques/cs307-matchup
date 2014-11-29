@@ -21,14 +21,15 @@ def login_user(request):
 
         username = request.POST.get('username')
         password = request.POST.get('password')
-        
+	returning = request.POST.get('ticket')
+        print returning
 
         hashedPass = hashlib.sha224(password).hexdigest()
         print hashedPass
         
         user = Users.objects.get(username = username)
         print user.password
-        if user.password == hashedPass:
+        if user.password == hashedPass or returning == str(1):
 
             
             
@@ -37,7 +38,7 @@ def login_user(request):
             user = (Users.objects.filter(username = username))
             for u in user:
                 users = u
-            todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd))
+            todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd,status = 'Pre-Game' ).order_by('league','time'))
             userPicks = list(UserPicks.objects.filter(user_id = users.user_id))
             #return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames})
             # tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )

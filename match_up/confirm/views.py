@@ -38,10 +38,7 @@ def confirm(request):
 			continue
 	uid = request.POST['userid']
 	print uid
-	user = (Users.objects.filter(user_id = str(uid)))
-	users = ''
-	for u in user:
-		users = u
+	users = Users.objects.get(user_id = uid)
 	print users
 	history = list(UserPicks.objects.filter(user_id = uid))
 	TABLE = "<table><tr><th>Game Date</th><th>League</th><th>Home</th><th>Home Score</th><th>Away</th><th>Away Score</th><th>Your Pick</th><th>Winning Team</th><th>Points</th></tr>"

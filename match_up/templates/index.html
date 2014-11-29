@@ -95,7 +95,12 @@ tr:hover {
 			<input type="submit" value="Send Picks/Check Picks" >
 		</form>
 		<br><br>
-		<a href='/rankings/'>Rankings</a>
+		<form action="/rankings/" method="POST">
+			{% csrf_token %}
+			<input type="hidden" name="userid" value={{users.user_id}}>
+		
+			<input type="submit" value="Rankings">
+		</form>
 
 		<div>
 
