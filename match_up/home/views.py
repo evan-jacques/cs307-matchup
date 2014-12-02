@@ -33,7 +33,7 @@ def index(request):
 
 	todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd))
 
-	userPicks = list(UserPicks.objects.filter(user_id = user.user_id))
+	userPicks = list(UserPicks.objects.filter(user_id = users.user_id))
 	#return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames})
 	# tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )
 	# formset = tableFormSet()
