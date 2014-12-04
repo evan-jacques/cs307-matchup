@@ -27,9 +27,11 @@ body {
 }
 
 .logo {
-	margin-left: 90%;
-	margin-top: -55px;
+	margin-left: 80%;
+	margin-top: -70px;
 }
+
+
 table {
 	border-collapse: collapse;
 	width: 100%;
@@ -58,6 +60,41 @@ tr:hover {
 	font-size: 20px;
 	
 }
+
+a:link {
+	color: white;
+	font-size: 61.5px;
+	font-family: 'Arial', sans-serif;
+	text-decoration: none;
+}
+
+a:visited {
+	color: white;
+	font-size: 61.5px;
+	font-family: 'Arial', sans-serif;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	font-size: 61.5px;
+	font-family: 'Arial', sans-serif;
+	text-decoration: none;
+}
+
+a:active {
+	color: black;
+	font-size: 61.5px;
+	font-family: 'Arial', sans-serif;
+	text-decoration: none;
+}
+
+.header_span{
+	background-color:grey; 
+	color:white; 
+	font-size:61.5px; 
+	font-family: 'Arial', sans-serif;
+}
 .hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
 
 h1 {
@@ -73,7 +110,7 @@ h1 {
 		<div class="header-cont">
 			<div class="header">
 				<span style="background-color:grey; color:white; font-size:61.5px; font-family: 'Arial', sans-serif;">{{user.username}}</span> score:{{user.score_total}} 
-				<div class="logo"><img src="http://i.imgur.com/BYk8c2k.png?1" height="40" width="80"> </div>
+				<div class="logo"><a href="../matchup"><span style="font-size: 20px;">Log Out<span></a><img src="http://i.imgur.com/BYk8c2k.png?1" height="40" width="80" hspace="20"> </div>
 			</div>
 		</div>
 	</br>
