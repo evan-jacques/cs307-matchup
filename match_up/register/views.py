@@ -20,10 +20,11 @@ def register(request):
 
 	if request.POST:
 
-		registered = "<h3>Here's your information (Protip: Write it down! We don't hold on to your password in plaintext)</h3><p>Username:%s</p><p>Password:%s</p><p>Go back to the login and sign in now!</p>"%(str(user), str(passw))
 		user = request.POST.get('username')
 		email = request.POST.get('email')
 		passw = request.POST.get('password')
+		registered = "<h3>Here's your information (Protip: Write it down! We don't hold on to your password in plaintext)</h3><p>Username:%s</p><p>Password:%s</p><p>Go back to the login and sign in now!</p>"%(str(user), str(passw))
+
 
 		if (user and email and passw != ''):
 			hashedPass = hashlib.sha224(passw).hexdigest()

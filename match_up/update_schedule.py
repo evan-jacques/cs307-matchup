@@ -14,6 +14,7 @@ def connect_to_db(username,password,host,database,echo=False,pool_size=20):
 	db = MySQLdb.connect(host, username, password, database)
 	return db.cursor(), db
 
+
 def run():
 	dbcursor, db = connect_to_db(username,password,host,database)
 	date = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))

@@ -60,77 +60,36 @@ tr:hover {
 }
 .hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
 
-a:link {
-	color: white;
-	font-size: 61.5px;
-	font-family: 'Arial', sans-serif;
-	text-decoration: none;
+h1 {
+	font-family: "Arial", sans-serif;
+	font-size: 32.5px;
+	text-align: center;
 }
 
-a:visited {
-	color: white;
-	font-size: 61.5px;
-	font-family: 'Arial', sans-serif;
-	text-decoration: none;
-}
-
-a:hover {
-	color: black;
-	font-size: 61.5px;
-	font-family: 'Arial', sans-serif;
-	text-decoration: none;
-}
-
-a:active {
-	color: black;
-	font-size: 61.5px;
-	font-family: 'Arial', sans-serif;
-	text-decoration: none;
-}
-
-.header_span{
-	background-color:grey; 
-	color:white; 
-	font-size:61.5px; 
-	font-family: 'Arial', sans-serif;
-}
 </style>
 
-	<script type="text/javascript">
-		function submit() {
-			form = document.getElementById('myForm');
-			form.submit();
-		}
-	</script>
-
 </head>
-<body>
-	<div class="header-cont">
+	<body>
+		<div class="header-cont">
 			<div class="header">
-				<form style="display: inline;" id="myForm" action="/userinfo/" method="POST">
-					{% csrf_token %}
-					<input type="hidden" name="userid" value={{users.user_id}}>
-					<input type="hidden" name="ticket" value=1>
-					<input type="hidden" name="password" value=''>
-					<span class="header_span">	
-						<a href="#" onclick="submit(); return false;">{{users.username}}</a>
-					</span> 
-
-				</form>
-				score:{{users.score_total}}
+				<span style="background-color:grey; color:white; font-size:61.5px; font-family: 'Arial', sans-serif;">{{user.username}}</span> score:{{user.score_total}} 
 				<div class="logo"><img src="http://i.imgur.com/BYk8c2k.png?1" height="40" width="80"> </div>
 			</div>
 		</div>
 	</br>
 	</br>
 	</br>
+
 	<div class="content">
+
+	<br>	
+	<h1> {{user.username}} </h1>
 	{% autoescape off %}{{TABLE}}{% endautoescape %}
 	<br><br>
-	
+
 	<form action="/matchup/" method="POST">
 		{% csrf_token %}
-		<input type="hidden" name="username" value={{users.username}}>
+		<input type="hidden" name="username" value={{user.username}}>
 		<input type="hidden" name="ticket" value=1>
 		<input type="hidden" name="password" value=''>
 		<input type="submit" value="Home">
@@ -142,5 +101,8 @@ a:active {
 	}
 	</script>
 	</div>
-</body>
+
+	</body>
+
+
 </html>

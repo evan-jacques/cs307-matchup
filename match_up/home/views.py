@@ -26,10 +26,13 @@ def index(request):
 	userN = request.POST.get('username') 
 	print request.POST
 	yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
+
 	user = (Users.objects.filter(username = userN))
 	for u in user:
 		users = u
+
 	todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd))
+
 	userPicks = list(UserPicks.objects.filter(user_id = users.user_id))
 	#return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames})
 	# tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )

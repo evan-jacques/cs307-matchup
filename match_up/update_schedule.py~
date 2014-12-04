@@ -14,7 +14,11 @@ def connect_to_db(username,password,host,database,echo=False,pool_size=20):
 	db = MySQLdb.connect(host, username, password, database)
 	return db.cursor(), db
 
+<<<<<<< HEAD
+def run():
+=======
 if __name__ == '__main__':
+>>>>>>> 4474bdcd96306c07d8c4d3a28ad4e9683538b494
 	dbcursor, db = connect_to_db(username,password,host,database)
 	date = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
 	for day in range(date-5,date + 5):

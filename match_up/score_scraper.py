@@ -44,13 +44,14 @@ def today(league,date):
 	except Exception, e:
 		print e
 	return games
- 
-if __name__ == "__main__":
-	yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
-	for league in ['NBA', 'NHL','NFL']:
-		print today(league,yyyymmdd + 1)
-		time.sleep(1)
 
+''' 
+if __name__ == "__main__":
+	for league in ['NBA', 'NHL']:
+		print today(league)
+		time.sleep(1)
+	#print today('MLB')
+'''
 """
 1508798512690156
 04437ecd63d6e0214f69b17daaf5b653
