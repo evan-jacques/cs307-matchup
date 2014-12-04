@@ -21,19 +21,34 @@ def rankings(request):
 	nhl = list(Users.objects.all().order_by('-score_nhl'))
 	nba = list(Users.objects.all().order_by('-score_nba'))
 	total = list(Users.objects.all().order_by('-score_total'))
-	nhl_rank = "<table><caption>Best NHL Score</caption><tr><th>Username</th><th>Points</th></tr>"
+	counth = 1
+	countb = 1
+	countt = 1
+	nhl_rank = "<table><caption>Best NHL Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for h in nhl:
-		g = '<tr><td>%s</td><td>%s</td></tr>' % (str(h.username), str(h.score_nhl))
+		if counth > 10:
+			counth = 1
+			break
+		g = '<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (str(counth),str(h.username), str(h.score_nhl))
+		counth += 1
 		nhl_rank = nhl_rank + g
 	nhl_rank = nhl_rank + '</table>'
-	nba_rank = "<table><caption>Best NBA Score</caption><tr><th>Username</th><th>Points</th></tr>"
+	nba_rank = "<table><caption>Best NBA Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for b in nba:
-		g = '<tr><td>%s</td><td>%s</td></tr>' % (str(b.username), str(b.score_nba))
+		if countb > 10:
+			countb = 1
+			break
+		g = '<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (str(countb),str(b.username), str(b.score_nba))
+		countb += 1
 		nba_rank = nba_rank + g
 	nba_rank = nba_rank + '</table>'
-	total_rank = "<table><caption>Best Total Score</caption><tr><th>Username</th><th>Points</th></tr>"
+	total_rank = "<table><caption>Best TOTAL Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for t in total:
-		g = '<tr><td>%s</td><td>%s</td></tr>' % (str(t.username), str(t.score_total))
+		if countt > 10:
+			countt = 1
+			break
+		g = '<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (str(countt),str(t.username), str(t.score_total))
+		countt += 1
 		total_rank = total_rank + g
 	total_rank = total_rank + '</table>'
 	return render_to_response('rankings.html',{'nhl_rank' : nhl_rank, 'nba_rank' : nba_rank, 'total_rank' : total_rank, 'users': users},context_instance=RequestContext(request))
