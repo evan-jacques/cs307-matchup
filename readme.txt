@@ -16,7 +16,7 @@ $python manage.py runserver
 
 this should run the site at http://127.0.0.1:8000/matchup/
 
-Either register an account or use are template account:
+Either register an account or use our template account:
 Username: user1
 Password: pass1
 
