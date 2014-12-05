@@ -24,7 +24,7 @@ def rankings(request):
 	counth = 1
 	countb = 1
 	countt = 1
-	nhl_rank = "<table><caption>Best NHL Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
+	nhl_rank = "<table><caption><h1>Best NHL Score</h1></caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for h in nhl:
 		if counth > 10:
 			counth = 1
@@ -33,7 +33,7 @@ def rankings(request):
 		counth += 1
 		nhl_rank = nhl_rank + g
 	nhl_rank = nhl_rank + '</table>'
-	nba_rank = "<table><caption>Best NBA Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
+	nba_rank = "<table><caption><h1>Best NBA Score</h1></caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for b in nba:
 		if countb > 10:
 			countb = 1
@@ -42,7 +42,7 @@ def rankings(request):
 		countb += 1
 		nba_rank = nba_rank + g
 	nba_rank = nba_rank + '</table>'
-	total_rank = "<table><caption>Best TOTAL Score</caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
+	total_rank = "<table><caption><h1>Best TOTAL Score</h1></caption><tr><th>Rank</th><th>Username</th><th>Points</th></tr>"
 	for t in total:
 		if countt > 10:
 			countt = 1
