@@ -11,8 +11,8 @@ computers on the 3rd floor do). Then go into the 'match_up'
 directory. 
 
 run these commands:
-$python manage.py syncdb
-$python manage.py runserver
+cs307-matchup/match_up$python manage.py syncdb
+cs307-matchup/match_up$python manage.py runserver
 
 this should run the site at http://127.0.0.1:8000/matchup/
 
