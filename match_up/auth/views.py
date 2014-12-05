@@ -8,7 +8,7 @@ import MySQLdb
 import hashlib
 
 def connect_to_db(username,password,host,database,echo=False,pool_size=20):
-	print database
+	
 	db = MySQLdb.connect(host, username, password, database)
 	return db.cursor(), db
 
@@ -16,39 +16,37 @@ def login_user(request):
 	state = "Log In"
 	html = "/login/"
 	username = password = ''
-	print request.POST
+	
 	if request.POST:
 
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 		returning = request.POST.get('ticket')
-		print returning
+		
 
 		hashedPass = hashlib.sha224(password).hexdigest()
-		print hashedPass
+		
 		
 		if (username != ''):
 			user = Users.objects.get(username = username)
-			print user.password
+			
 
 
 			if user.password == hashedPass or returning == str(1):
 
 				
 				
-				print request.POST
+				
 				yyyymmdd = int(datetime.datetime.now(pytz.timezone('US/Pacific')).strftime("%Y%m%d"))
 				user = (Users.objects.filter(username = username))
 				for u in user:
 					users = u
 				todaysGames = list(Schedule.objects.filter(game_id = yyyymmdd,status = 'Pre-Game' ).order_by('league','time'))
 				userPicks = list(UserPicks.objects.filter(user_id = users.user_id))
-				#return render_to_response('index.html', {'users': users, 'todaysGames' : todaysGames})
-				# tableFormSet = formset_factory(tableForm, extra = (len(todaysGames)-1) )
-				# formset = tableFormSet()
+				
 
 				TABLE = "<table><tr><th>League</th><th>Home</th><th>Away</th><th>Start Time</th>"
-				# if request.method == 'GET':
+			
 				
 				matches = []
 				for game in todaysGames:

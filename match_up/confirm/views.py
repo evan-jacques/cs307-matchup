@@ -11,7 +11,7 @@ database = '2014fall307tayre'
 password = '260480603'
 
 def connect_to_db(username,password,host,database,echo=False,pool_size=20):
-	print database
+	
 	db = MySQLdb.connect(host, username, password, database)
 	return db.cursor(), db
 
@@ -20,7 +20,7 @@ def confirm(request):
 	picks = []
 	for p in request.POST:
 		picks.append(request.POST[p])
-	print picks
+	
 	for pick in picks:
 		try:
 			data = pick.split(',')
@@ -37,9 +37,9 @@ def confirm(request):
 		except IndexError:
 			continue
 	uid = request.POST['userid']
-	print uid
+	
 	users = Users.objects.get(user_id = uid)
-	print users
+	
 	history = list(UserPicks.objects.filter(user_id = uid).order_by('-game_id', 'league'))
 	TABLE = "<table><tr><th>Game Date</th><th>League</th><th>Home</th><th>Home Score</th><th>Away</th><th>Away Score</th><th>Your Pick</th><th>Winning Team</th><th>Points</th></tr>"
 	for game in history:

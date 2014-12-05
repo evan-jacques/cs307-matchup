@@ -7,11 +7,9 @@ import MySQLdb
 
 def information(request):
 	
-	# print(request.POST)
-	# userN = ''
+	
 	uid = request.POST['userid'] 
-	#some tests
-	# userN = 'trevor'
+	
 
 	user = Users.objects.get(user_id = uid)
 

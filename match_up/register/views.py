@@ -11,7 +11,7 @@ username = "tayre"
 database = '2014fall307tayre'
 password = '260480603'
 def connect_to_db(username,password,host,database,echo=False,pool_size=20):
-	print database
+	
 	db = MySQLdb.connect(host, username, password, database)
 	return db.cursor(), db
 
