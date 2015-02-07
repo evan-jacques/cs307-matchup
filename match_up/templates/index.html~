@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Match Up</title>
+<style type="text/css">
+body {
+	background-color: #F0F0F0;
+	height: 2000px;
+}
+
+
+.header-cont {
+	width: 100%;
+	position: fixed;
+	top: 0px;
+
+}
+
+.header {
+	height: 70px;
+	background: #003366;
+	width: 100%;
+	font-size: 30px;
+	color:white;
+	margin-right: -8px;
+
+
+	
+}
+
+.logo {
+	margin-left: 90%;
+	margin-top: -55px;
+}
+
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+td, th {
+	border: 1px solid #999;
+	padding: 0.5rem;
+	font-family: "Arial", sans-serif;
+
+}
+
+th{
+	background-color: #C9C9DB;
+
+}
+tr:hover {
+	background-color: #C9C9DB;
+}
+
+.content {
+
+	width:100%;
+	background: #F0F0F0;
+	border: 1px solid #CCC;
+	height: 2000px;
+	font-size: 20px;
+	margin-left: 0px;
+	
+}
+
+
+.hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
+</style>
+
+</head>
+<body>
+	<iframe name="hiddenFrame" class="hide"></iframe>
+
+		<div class="header-cont">
+			<div class="header">
+				<span style="background-color:grey; color:white; font-size:61.5px; font-family: 'Arial', sans-serif;">{{users.username}}</span> score:{{users.score_total}}
+				<div class="logo"><img src="http://i.imgur.com/BYk8c2k.png?1" height="40" width="80"> </div>
+			</div>
+		</div>
+		<div class="content">
+			
+		</br>
+		</br>
+
+		<h1>Welcome to Match Up</h1>
+		<p>Pick the winners for the upcoming games</p>
+
+		<form action="/pick/" method="POST">
+			{% csrf_token %}
+			{% autoescape off %}{{TABLE}}{% endautoescape %}
+		</br>
+			<input type="hidden" name="userid" value={{users.user_id}}>
+		
+			<input type="submit" value="Send Picks/Check Picks" >
+		</form>
+		<br><br>
+		<form action="/rankings/" method="POST">
+			<input type="hidden" name="userid" value={{users.user_id}}>
+		
+			<input type="submit" value="Rankings">
+		</form>
+
+		<div>
+
+
+
+		<script type="text/javascript">
+		// 	// function gamesTable (gamesList) {
+		// 	// 	for (var i = 0; i< gamesList.length(); i++)
+		// 	// 		gameList[i].league
+		// 	// };
+		// 	console.log('1');
+		// 	function tableGames(){
+		// 		console.log('2');
+		// 		var matchList = (("{{matches}}")).split('],[');
+		// 		console.log(matchList);
+		// 		matchList = matchList.join();
+		// 		matchList = matchList.split('&#39');
+		// 		console.log(matchList);
+		// 		matchList = matchList.join();
+		// 		console.log(matchList);
+		// 		matchList = matchList.split('u,').join('');
+		// 		matchList = matchList.split(',;').join('');
+		// 		matchList = matchList.split(';').join('');
+		// 		console.log(matchList);
+		// 		matchList = matchList.split('],');
+		// 		console.log(matchList);
+		// 		var glist = new Array(matchList.length);
+		// 		for(var x = 0; x < matchList.length; x ++){
+		// 			var m = matchList[x].split('[').join('');
+		// 			var m = m.split(']').join('');
+		// 			var m = m.split(' ').join('');
+		// 			var mtch = m.split(',');
+		// 			mtch[0] = mtch[0].split('L').join('');
+		// 			glist[x] = mtch;
+					
+		// 			console.log(mtch);
+		// 		}
+		// 		console.log(glist);
+		// 		var form=document.getElementById('myform');
+		// 		var body=document.getElementsByTagName('body')[0];
+		// 		var tbl=document.createElement('table');
+		// 		tbl.style.width='100%';
+		// 		tbl.style.border = "1px solid black";
+
+		// 		for(var i = 0; i < glist.length; i++){
+		// 			var tr = tbl.insertRow();
+		// 			var game = glist[i];
+		// 			for(var j = 1; j < (game.length + 2); j++ ){            
+		// 				var td = tr.insertCell();
+		// 				if (j >= game.length) {
+		// 					gamename = game[0] + game[1] + game[2];
+		// 					var label = document.createElement("label");
+		// 					var radioInput = document.createElement('input');
+		// 					radioInput.setAttribute('type', 'radio');
+		// 					radioInput.setAttribute('name', gamename);
+		// 					label.appendChild(radioInput);
+
+  //   							label.appendChild(document.createTextNode("Home"));
+		// 					if (j == game.length) {
+		// 						radioInput.setAttribute('value', 'HOME');
+		// 					}
+		// 					else {
+		// 						radioInput.setAttribute('value', 'AWAY');
+		// 					}
+		// 					td.appendChild(label);
+		// 				}
+		// 				td.appendChild(document.createTextNode(game[j]));
+		// 			}
+			            
+		// 		}
+		// 	    body.appendChild(tbl);
+		// 	    form.appendChild(tbl);
+		// 	}
+		// 	document.getElementsByClassName("content").innerHTML = tableGames();
+
+		</script>
+		
+		
+
+		 	
+
+		<!-- <form action="/pick/" method="POST">
+			<input type="submit" value="Update" />
+		</form> -->
+		
+
+</body>
+</html>
